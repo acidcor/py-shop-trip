@@ -1,15 +1,21 @@
-import dataclasses
+from typing import Dict, List, Union
 
 from app.car import Car
 
 
-@dataclasses.dataclass
 class Customer:
-    name: str
-    product_card: dict
-    location: list[int]
-    money: float | int
-    car: Car
+    def __init__(self,
+                 name: str,
+                 product_card: Dict[str, Union[int, float]],
+                 location: List[int],
+                 money: Union[float, int],
+                 car: "Car") -> None:
+        self.name = name
+        self.product_card = product_card
+        self.location = location
+        self.money = money
+        self.car = car
+        self._home_location = location.copy()
 
     @staticmethod
     def get_customer_list(config: dict) -> list:
@@ -31,3 +37,10 @@ class Customer:
             )
 
         return result
+
+    def travel_to_shop(self, to: list[int]) -> None:
+        self._home_location = self.location
+        self.location = to
+
+    def travel_to_home(self) -> None:
+        self.location = self._home_location

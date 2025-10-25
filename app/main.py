@@ -41,6 +41,7 @@ def shop_trip() -> None:
             )
 
         shop, trip_price = shop_choice
+        customer.travel_to_shop(shop.location)
 
         if customer.money < trip_price:
             result.append(
@@ -58,5 +59,6 @@ def shop_trip() -> None:
             f"{customer.name} now has "
             f"{round(customer.money - trip_price, 2)} dollars\n"
         )
+        customer.travel_to_home()
 
     print("".join(result).strip("\n"))
