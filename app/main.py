@@ -1,4 +1,5 @@
 import json
+import os
 
 from app.customer import Customer
 from app.shop import Shop
@@ -6,8 +7,11 @@ from app.services import calculate_trip_price
 
 
 def shop_trip() -> None:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(BASE_DIR, "config.json")
+
     with open(
-        "/home/acidcor/PycharmProjects/py-shop-trip/app/config.json", "rb"
+        config_path, "rb"
     ) as file:
         config = json.load(file)
 
