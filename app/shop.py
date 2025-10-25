@@ -37,10 +37,11 @@ class Shop:
         for item in customer.product_card:
             cost = self.products[item] * customer.product_card[item]
             amount += cost
+            formatted_cost = f"{cost: .2f}".rstrip("0").rstrip(".")
             receipt.append(
                 f"{customer.product_card[item]}"
-                f" {item}s for "
-                f"{f"{cost: .2f}".rstrip("0").rstrip(".")}"
+                f" {item}s for"
+                f"{formatted_cost}"
                 f" dollars\n"
             )
 
