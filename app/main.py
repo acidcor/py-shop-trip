@@ -7,8 +7,8 @@ from app.services import calculate_trip_price
 
 
 def shop_trip() -> None:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    config_path = os.path.join(BASE_DIR, "config.json")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(base_dir, "config.json")
 
     with open(
         config_path, "rb"
